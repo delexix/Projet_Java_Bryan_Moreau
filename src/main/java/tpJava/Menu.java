@@ -7,6 +7,11 @@ public class Menu {
 	private Double prix;
 	private List<Produit> produits;
 	
+	//constructeur par défaut
+	public Menu() {
+		
+	}
+	
 	//constructeur avec liste
 	public Menu(String nom, Double prix, List<Produit> produits) {
 		super();

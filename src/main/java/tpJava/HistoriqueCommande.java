@@ -9,6 +9,11 @@ public class HistoriqueCommande {
 	private List<Menu> menus;
 	private List<Produit> produitsHorsMenu;
 	
+	//constructeur par défaut
+	public HistoriqueCommande() {
+		
+	}
+	
 	//constructeur de la classe qui va permettre de stocké les informations des commandes dans le fichier
 	public HistoriqueCommande(Date dateCommande, Double prix, List<Menu> menus, List<Produit> produitsHorsMenu) {
 		super();

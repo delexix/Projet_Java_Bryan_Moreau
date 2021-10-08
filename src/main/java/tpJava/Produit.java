@@ -9,6 +9,11 @@ public class Produit {
 	private String type;
 	private List<Ingredient> ingredients;
 	
+	//constructeur par défaut
+	public Produit() {
+			
+	}
+	
 	//constructeur avec liste d'ingrédient
 	public Produit(boolean exclusifMenu, Double prix, String nom,String type, List<Ingredient> ingredients) {
 		super();

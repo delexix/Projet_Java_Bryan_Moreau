@@ -1,5 +1,6 @@
 package tpJava;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
@@ -81,7 +82,14 @@ public class BorneCommande {
 		FileJsoner<HistoriqueCommande> jsoner = new FileJsoner<HistoriqueCommande>("./src/main/resources/"+c.getNumero()+".json");
 		List<HistoriqueCommande> commandes = jsoner.readFromFile();
 		System.out.println("Vos commandes : ");
-		System.out.println(commandes);
+		for(int i=0;i<commandes.size();i++) {
+			System.out.println("Commande "+i+" : ");
+			//System.out.println(commandes.get(i) instanceof HistoriqueCommande);
+			System.out.println("Date : "+commandes.get(i).getDateCommande());
+			System.out.println("Prix : "+commandes.get(i).getPrix());
+			System.out.println("Menus : "+commandes.get(i).getMenus());
+			System.out.println("Produit Hors-Menu : "+commandes.get(i).getProduitsHorsMenu());
+		}
 		this.interfaceCMD(c);
 		
 	}
@@ -151,7 +159,7 @@ public class BorneCommande {
 		ThreadAvancementCommande thread = new ThreadAvancementCommande(commande);
 		thread.start();
 		
-		System.out.println("Votre commande va prendre environ "+Math.round(commande.calculTemps())+"min pour être finalisé.");
+		System.out.println("Votre commande va prendre environ "+Math.round(commande.calculTemps())+"secondes pour être finalisé.");
 		this.interfaceCMD();
 		
 	}
@@ -159,43 +167,29 @@ public class BorneCommande {
 	private void addProduit(Commande commande) {
 		System.out.println("-----------------------------------------------");
 		System.out.println("Choisissez le produit à ajouter :");
-		System.out.println("1. Nuggets");
-		System.out.println("2. Coca-Cola");
-		System.out.println("3. Salade composé");
-		System.out.println("4. Frites");
-		System.out.println("5. Eau");
+		
+		//récupère les produits de la "base de données" qui sont disponible hors menu
+		List<Integer> numeros = new ArrayList<Integer>();
+		for(int i=0;i<data.getProduits().size();i++) {
+			Produit p = data.getProduits().get(i);
+			if(!p.isExclusifMenu()) {
+				System.out.println(i+" : "+p.getNom());
+				numeros.add(i);
+			}
+		}
 		System.out.print("Votre choix : ");
 		int v = this.getSc().nextInt();
 		
 		//cas où le client met autre chose que les choix
-		while (!(v==1 || v==2 || v==3 || v==4 || v==5)) {
+		if (!numeros.contains(v)) {
 			System.out.println("Valeur non valide");
-			System.out.println("Choisissez le produit à ajouter :");
-			System.out.println("1. Nuggets");
-			System.out.println("2. Coca-Cola");
-			System.out.println("3. Salade composé");
-			System.out.println("4. Frites");
-			System.out.println("5. Eau");
-			System.out.print("Votre choix : ");
-			v = this.getSc().nextInt();
+			this.addProduit(commande);
 		}
 		
-		if(v==1) {
-			//ajout des nuggets
-			commande.getProduits().add(this.getData().getProduits().get(4));
-		}else if(v==2) {
-			//ajout du coca
-			commande.getProduits().add(this.getData().getProduits().get(0));
-		}else if(v==3) {
-			//ajout de la salade
-			commande.getProduits().add(this.getData().getProduits().get(2));
-		}else if(v==4) {
-			//ajout des frites
-			commande.getProduits().add(this.getData().getProduits().get(3));
-		}else if(v==5) {
-			//ajout de l'eau
-			commande.getProduits().add(this.getData().getProduits().get(5));
-		}
+		//ajout du produit
+		commande.getProduits().add(this.getData().getProduits().get(v));
+		
+		//retour au choix d'ajout
 		this.createCommande(commande);
 		
 	}
@@ -203,25 +197,21 @@ public class BorneCommande {
 	private void addMenu(Commande commande) {
 		System.out.println("-----------------------------------------------");
 		System.out.println("Choisissez le menu à ajouter :");
-		System.out.println("1. Menu Big Max");
-		System.out.println("2. Menu Enfant");
+		List<Integer> numeros = new ArrayList<Integer>();
+		for(int i=0;i<data.getMenus().size();i++) {
+			System.out.println(i+" : "+data.getMenus().get(i).getNom());
+			numeros.add(i);
+		}
 		System.out.print("Votre choix : ");
 		int v = this.getSc().nextInt();
-		while (!(v==1 || v==2)) {
+		if (!numeros.contains(v)) {
 			System.out.println("Valeur non valide");
-			System.out.println("Choisissez le menu à ajouter :");
-			System.out.println("1. Menu Big Max");
-			System.out.println("2. Menu Enfant");
-			System.out.print("Votre choix : ");
-			v = this.getSc().nextInt();
+			this.addMenu(commande);
 		}
-		if(v==1) {
-			//ajout du menu big max
-			commande.getMenus().add(this.getData().getMenus().get(0));
-		}else if(v==2) {
-			//ajout du menu enfant
-			commande.getMenus().add(this.getData().getMenus().get(1));
-		}
+		//ajout du menu 
+		commande.getMenus().add(this.getData().getMenus().get(v));
+
+		//retour au choix d'ajout
 		this.createCommande(commande);
 		
 	}

@@ -3,6 +3,11 @@ package tpJava;
 public abstract class Ingredient {
 	private String nom;
 
+	//constructeur par défaut
+	public Ingredient() {
+				
+	}
+		
 	//constructeur d'ingrédient
 	public Ingredient(String nom) {
 		super();
