@@ -4,6 +4,11 @@ public class IngredientCuit extends Ingredient {
 	private String typeCuisson;
 	private Double tempsCuisson;
 	
+	//constructeur par défaut
+	public IngredientCuit() {
+				
+	}
+	
 	//constructeur pour un ingrédient cuit
 	public IngredientCuit(String nom, String typeCuisson, Double tempsCuisson) {
 		super(nom);
@@ -27,6 +32,12 @@ public class IngredientCuit extends Ingredient {
 	public void setTempsCuisson(Double tempsCuisson) {
 		this.tempsCuisson = tempsCuisson;
 	}
+
+	@Override
+	public String toString() {
+		return "[Nom="+super.getNom()+", typeCuisson=" + typeCuisson + ", tempsCuisson=" + tempsCuisson + "]";
+	}
+	
 	
 	
 

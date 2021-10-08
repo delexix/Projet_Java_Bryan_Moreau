@@ -17,7 +17,6 @@ public class FileJsoner <T> {
     public FileJsoner(String filename) {
         file = new File(System.getProperty("user.dir"), filename);
     }
-//TODO : modifier pour enlever l'erreur instance
 //TODO : mettre tout les users dans le même fichier 
     public void writeToFile() {
         try {

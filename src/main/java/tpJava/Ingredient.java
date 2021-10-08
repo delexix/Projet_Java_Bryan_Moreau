@@ -1,6 +1,10 @@
 package tpJava;
 
-public abstract class Ingredient {
+
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+@JsonDeserialize(as=IngredientCuit.class)
+public abstract class Ingredient{
 	private String nom;
 
 	//constructeur par défaut
