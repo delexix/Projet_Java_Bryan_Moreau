@@ -37,7 +37,7 @@ public class BorneCommande {
 		System.out.println("---------------------------------------------");
 		System.out.println("identifiez-vous avec votre numéro de client :");
 		System.out.print("numéro client : ");
-		Integer numero = Integer.parseInt(sc.nextLine());
+		Integer numero = sc.nextInt();
 		Optional<Client> opC = this.identifier(numero);
 		
 		//cas où le client met un numero non valide
@@ -103,9 +103,9 @@ public class BorneCommande {
 		commande.calculPrix();
 		commande.nextStatut();
 		
-		/*//Thread pour afficher l'avancement de la commande
+		//Thread pour afficher l'avancement de la commande
 		ThreadAvancementCommande thread = new ThreadAvancementCommande(commande);
-		thread.start();*/
+		thread.start();
 		
 		System.out.println("Votre commande va prendre "+commande.calculTemps()+" pour être finalisé.");
 		this.interfaceCMD();
