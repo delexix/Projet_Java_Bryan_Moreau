@@ -53,22 +53,66 @@ public class BorneCommande {
 		System.out.println("Bonjour "+c.getPrenom()+" "+c.getNom());
 		System.out.println("Que voulez-vous faire ?");
 		System.out.println("1. Passer une commande ");
+		System.out.println("2. Consulter l'historique des commandes");
 		System.out.print("Votre choix : ");
 		int v = this.getSc().nextInt();
 		
 		//cas où le client met autre chose que les choix
-		while (v!=1) {
+		while (!(v==1 || v==2)) {
 			System.out.println("Valeur non valide");
 			System.out.println("Que voulez-vous faire ?");
 			System.out.println("1. Passer une commande ");
+			System.out.println("2. Consulter l'historique des commandes");
 			System.out.print("Votre choix : ");
 			v = this.getSc().nextInt();
 		}
 		
-		Commande commande = new Commande("En cours",c);
-		this.createCommande(commande);
+		if(v==1) {
+			Commande commande = new Commande("En cours",c);
+			this.createCommande(commande);
+		}else if(v==2) {
+			this.consulterCommande(c);
+		}
 		
 	}
+	
+	private void consulterCommande(Client c) {
+		System.out.println("-----------------------------------------------");
+		FileJsoner<HistoriqueCommande> jsoner = new FileJsoner<HistoriqueCommande>("./src/main/resources/"+c.getNumero()+".json");
+		List<HistoriqueCommande> commandes = jsoner.readFromFile();
+		System.out.println("Vos commandes : ");
+		System.out.println(commandes);
+		this.interfaceCMD(c);
+		
+	}
+	
+	private void interfaceCMD(Client c) {
+		System.out.println("-----------------------------------------------");
+		System.out.println("Bonjour "+c.getPrenom()+" "+c.getNom());
+		System.out.println("Que voulez-vous faire ?");
+		System.out.println("1. Passer une commande ");
+		System.out.println("2. Consulter l'historique des commandes");
+		System.out.print("Votre choix : ");
+		int v = this.getSc().nextInt();
+		
+		//cas où le client met autre chose que les choix
+		while (!(v==1 || v==2)) {
+			System.out.println("Valeur non valide");
+			System.out.println("Que voulez-vous faire ?");
+			System.out.println("1. Passer une commande ");
+			System.out.println("2. Consulter l'historique des commandes");
+			System.out.print("Votre choix : ");
+			v = this.getSc().nextInt();
+		}
+		
+		if(v==1) {
+			Commande commande = new Commande("En cours",c);
+			this.createCommande(commande);
+		}else if(v==2) {
+			this.consulterCommande(c);
+		}
+	}
+
 	//crée une commande et permet d'ajouter des menus et produits
 	private void createCommande(Commande commande) {
 		System.out.println("-----------------------------------------------");
@@ -107,7 +151,7 @@ public class BorneCommande {
 		ThreadAvancementCommande thread = new ThreadAvancementCommande(commande);
 		thread.start();
 		
-		System.out.println("Votre commande va prendre "+commande.calculTemps()+" pour être finalisé.");
+		System.out.println("Votre commande va prendre environ "+Math.round(commande.calculTemps())+"min pour être finalisé.");
 		this.interfaceCMD();
 		
 	}
