@@ -5,6 +5,7 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -29,7 +30,7 @@ public class Historique {
 		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		VBox root = new VBox();
 		root.setAlignment(Pos.CENTER);
-		Scene scene = new Scene(root,600,400);
+		Scene scene = new Scene(root,700,450);
 		
 		//création de la table pour contenir les historiques
 		TableView<HistoriqueCommande> table = new TableView<HistoriqueCommande>();
@@ -57,8 +58,20 @@ public class Historique {
 
         //ajout des colonnes
         table.getColumns().addAll(datCol, prixCol,menuCol,produitCol);
+        
+        //bouton de retour a la page de choix
+        Button retour = new Button("Retour");
+        retour.setOnAction(new EventHandler<ActionEvent>(){
+
+			@Override
+			public void handle(ActionEvent event) {
+				new Choix(event,borne,c);
+				
+			}
+        	
+        });
               
-        root.getChildren().add(table);
+        root.getChildren().addAll(table,retour);
 		
 		stage.setScene(scene);
 		stage.setTitle("Historique des commandes");

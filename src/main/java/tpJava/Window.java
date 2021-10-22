@@ -43,6 +43,7 @@ public class Window extends Application {
 		//création de la fenetre
 		VBox root = new VBox();
 		root.setAlignment(Pos.CENTER);
+		root.setSpacing(30);
 		Scene scene = new Scene(root,600,400);
 		
 		//création des composant de la fenêtre

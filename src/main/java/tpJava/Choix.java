@@ -19,6 +19,7 @@ public class Choix {
 		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		VBox root = new VBox();
 		root.setAlignment(Pos.CENTER);
+		root.setSpacing(30);
 		Scene scene = new Scene(root,600,400);
 		
 		//création des composants	

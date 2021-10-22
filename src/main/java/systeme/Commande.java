@@ -71,7 +71,12 @@ public class Commande {
 		for(int i=0;i<produits.size();i++) {
 			prix+=produits.get(i).getPrix();
 		}
-		this.prix=prix;
+		this.prix=arrondir(prix,2);
+	}
+	
+	//effectue un arrondie pour les prix
+	public double arrondir(double nombre,double nbApVirg){
+		return(double)((int)(nombre * Math.pow(10,nbApVirg) + .5)) / Math.pow(10,nbApVirg);
 	}
 	
 	//toString pour afficher l'objet

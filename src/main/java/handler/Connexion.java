@@ -1,5 +1,7 @@
 package handler;
 
+import java.util.Optional;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.TextField;
@@ -32,20 +34,11 @@ public class Connexion implements EventHandler<ActionEvent> {
 			//s'il a marqué quelque chose
 			Integer idI = Integer.valueOf(this.id.getText());
 
-			int i=0;
-			boolean trouver = false;
-			Client c = null;
-			while(i<borne.getClients().size() && !trouver ) {
-				if(borne.getClients().get(i).getNumero().equals(idI)) {
-					trouver=true;
-					c=borne.getClients().get(i);
-				}
-				i++;
-			}
+			Optional<Client> opC = borne.identifier(idI);
 			
-			if(trouver) {
+			if(opC.isPresent()) {
 				//le client existe
-				new Choix(event,this.borne,c);
+				new Choix(event,this.borne,opC.get());
 			}else {
 				//le client n'existe pas, affichage d'une information 
 				(new Alert(AlertType.INFORMATION,"Le numéro client n'est pas valide",ButtonType.OK)).show();
