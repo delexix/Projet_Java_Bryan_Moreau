@@ -10,6 +10,10 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.concurrent.ScheduledService;
 import javafx.concurrent.Task;
 import javafx.scene.control.Alert;
@@ -36,30 +40,19 @@ public class ThreadAvancementCommande extends Thread {
 		//simule le temps de préparation des produits
 		for(int j = 0; j<produits.size();j++) {
 			final int index = j;
-			Timer timer = new Timer();
-			timer.schedule(new TimerTask() {
-						@Override
-						public void run() {
-							(new Alert(AlertType.INFORMATION,"le "+produits.get(index).getNom()+" de la commande de "+commande.getClient().getPrenom()+" "+commande.getClient().getNom()+" est terminé.",ButtonType.OK)).show();							
-						}
-						
-					},TimeUnit.SECONDS.toMillis((produits.get(j).calculTemps()).longValue()));
-			
-		}
-		Timer timer = new Timer();
-		timer.schedule(new TimerTask() {
-					@Override
-					public void run() {
-						(new Alert(AlertType.INFORMATION,"La commande de "+commande.getClient().getPrenom()+" "+commande.getClient().getNom()+" est terminé.",ButtonType.OK)).show();
 
-						//met la commande en terminé
-						commande.nextStatut();
-						
-						//enregistrement de la commande dans un historique
-						FileJsoner<HistoriqueCommande> jsoner = new FileJsoner<HistoriqueCommande>("./src/main/resources/"+commande.getClient().getNumero()+".json");
-						jsoner.writeToFileNotOverwrite(new HistoriqueCommande(Date.from(Instant.now()),commande.getPrix(),commande.getMenus(),commande.getProduits()));					}
-					
-				},TimeUnit.SECONDS.toMillis((commande.calculTemps()).longValue()));
-		
+			Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(produits.get(j).calculTemps()), ev -> {
+				(new Alert(AlertType.INFORMATION,"le "+produits.get(index).getNom()+" de la commande de "+commande.getClient().getPrenom()+" "+commande.getClient().getNom()+" est terminé.",ButtonType.OK)).show();							
+
+		    }));
+		    timeline.setCycleCount(1);
+		    timeline.play();
+		}
+
+		Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(commande.calculTemps()), ev -> {
+			(new Alert(AlertType.INFORMATION,"La commande de "+commande.getClient().getPrenom()+" "+commande.getClient().getNom()+" est terminé.",ButtonType.OK)).show();
+	    }));
+	    timeline.setCycleCount(1);
+	    timeline.play();
 	}
 }
