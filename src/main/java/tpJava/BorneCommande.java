@@ -86,7 +86,7 @@ public class BorneCommande {
 			//TODO : caster les ingrédients en Froid si typeCuisson == null
 			System.out.println("Commande "+i+" : ");
 			System.out.println("Date : "+commandes.get(i).getDateCommande());
-			System.out.println("Prix : "+commandes.get(i).getPrix());
+			System.out.println("Prix : "+commandes.get(i).getPrix()+" €");
 			System.out.println("Menus : "+commandes.get(i).getMenus());
 			System.out.println("Produit Hors-Menu : "+commandes.get(i).getProduitsHorsMenu());
 		}
@@ -131,6 +131,12 @@ public class BorneCommande {
 		System.out.print("Votre choix : ");
 		int v = this.getSc().nextInt();
 		
+		//cas où l'utilisateur valide la commande alors qu'elle est vide
+		if(v==3 && (commande.getMenus().isEmpty() && commande.getProduits().isEmpty())) {
+			System.out.println("Votre commande est vide, elle ne peut pas être validé");
+			v=4;
+		}
+		
 		//cas où le client met autre chose que les choix
 		while (!(v==1 || v==2 || v==3)) {
 			System.out.println("Valeur non valide");
@@ -140,6 +146,12 @@ public class BorneCommande {
 			System.out.println("3. Terminer la commande");
 			System.out.print("Votre choix : ");
 			v = this.getSc().nextInt();
+			
+			//cas où l'utilisateur valide la commande alors qu'elle est vide
+			if(v==3 && (commande.getMenus().isEmpty() && commande.getProduits().isEmpty())) {
+				System.out.println("Votre commande est vide, elle ne peut pas être validé");
+				v=4;
+			}
 		}
 		if(v==1) {
 			this.addMenu(commande);
@@ -159,7 +171,7 @@ public class BorneCommande {
 		ThreadAvancementCommande thread = new ThreadAvancementCommande(commande);
 		thread.start();
 		
-		System.out.println("Votre commande va prendre environ "+Math.round(commande.calculTemps())+"secondes pour être finalisé.");
+		System.out.println("Votre commande va prendre environ "+Math.round(commande.calculTemps())+" secondes pour être finalisé.");
 		this.interfaceCMD();
 		
 	}
