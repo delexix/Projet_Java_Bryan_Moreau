@@ -51,7 +51,7 @@ public class Window extends Application {
 		Button button = new Button("Connexion");
 		
 		//ajout de l'action qui arrive quand on clique sur le boutton
-		button.setOnAction(new Connexion(this.borne,stage,id));
+		button.setOnAction(new Connexion(this.borne,id));
 		//ajout des composants
 		vbox.getChildren().add(Lid);
 		vbox.getChildren().add(id);

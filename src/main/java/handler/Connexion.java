@@ -8,16 +8,16 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import systeme.BorneCommande;
+import systeme.Client;
+import tpJava.Choix;
 
 public class Connexion implements EventHandler<ActionEvent> {
 	private BorneCommande borne;
-	private Stage stage;
 	private TextField id;
 	
 	
-	public Connexion(BorneCommande borne, Stage stage, TextField id) {
+	public Connexion(BorneCommande borne, TextField id) {
 		this.borne=borne;
-		this.stage=stage;
 		this.id=id;
 	}
 
@@ -34,16 +34,18 @@ public class Connexion implements EventHandler<ActionEvent> {
 
 			int i=0;
 			boolean trouver = false;
+			Client c = null;
 			while(i<borne.getClients().size() && !trouver ) {
 				if(borne.getClients().get(i).getNumero().equals(idI)) {
 					trouver=true;
+					c=borne.getClients().get(i);
 				}
 				i++;
 			}
 			
 			if(trouver) {
 				//le client existe
-				
+				new Choix(event,this.borne,c);
 			}else {
 				//le client n'existe pas, affichage d'une information 
 				(new Alert(AlertType.INFORMATION,"Le numéro client n'est pas valide",ButtonType.OK)).show();
