@@ -49,6 +49,10 @@ public class CommandeView {
 		hb.setSpacing(150);
 		hb.setAlignment(Pos.CENTER);
 		
+		HBox hb2 = new HBox();
+		hb2.setSpacing(50);
+		hb2.setAlignment(Pos.CENTER);
+		
 		VBox menuhb = new VBox();
 		menuhb.setAlignment(Pos.CENTER);
 		menuhb.setSpacing(30);
@@ -120,13 +124,27 @@ public class CommandeView {
 		Button termine = new Button("Terminer");
 		termine.setOnAction(new TerminerCommande(commande,borne));
 		
+		//bouton de retour a la page de choix
+        Button retour = new Button("Retour");
+        retour.setOnAction(new EventHandler<ActionEvent>(){
+
+			@Override
+			public void handle(ActionEvent event) {
+				new Choix(event,borne,c);
+				
+			}
+        	
+        });
+		
 		//ajout des composants
 		menuhb.getChildren().addAll(menu,menus,ajouterMenu);
 		produithb.getChildren().addAll(produit,produits,ajouterProduit);
 		
 		hb.getChildren().addAll(menuhb,produithb);
 		
-		root.getChildren().addAll(hb,termine);
+		hb2.getChildren().addAll(retour,termine);
+		
+		root.getChildren().addAll(hb,hb2);
 		
 		stage.setScene(scene);
 		stage.setTitle("Création de commande");
