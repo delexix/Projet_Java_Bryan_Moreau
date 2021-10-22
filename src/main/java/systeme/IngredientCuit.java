@@ -1,4 +1,4 @@
-package tpJava;
+package systeme;
 
 public class IngredientCuit extends Ingredient {
 	private String typeCuisson;

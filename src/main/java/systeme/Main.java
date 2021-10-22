@@ -1,7 +1,9 @@
-package tpJava;
+package systeme;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import tpJava.Window;
 
 public class Main {
 
@@ -25,7 +27,8 @@ public class Main {
 		l.add(c1);
 		BorneCommande borne = new BorneCommande(l);
 		
-		borne.interfaceCMD();
+		//borne.interfaceCMD();
+		Window.main(args);
 
 	}
 

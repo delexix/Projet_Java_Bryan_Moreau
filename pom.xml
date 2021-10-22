@@ -35,19 +35,57 @@
       <artifactId>javafx-controls</artifactId>
       <version>${javafx.version}</version>
     </dependency>
+    
+  	 <!-- Pour utiliser les fichiers FXML -->
+     <dependency>
+         <groupId>org.openjfx</groupId>
+         <artifactId>javafx-fxml</artifactId>
+         <version>${javafx.version}</version>
+     </dependency>
+     
+     <!-- Les collections, beans de JavaFX -->
+     <dependency>
+         <groupId>org.openjfx</groupId>
+         <artifactId>javafx-base</artifactId>
+         <version>${javafx.version}</version>
+     </dependency>
+     <!-- Pour la webview -->
+     <dependency>
+         <groupId>org.openjfx</groupId>
+         <artifactId>javafx-web</artifactId>
+         <version>${javafx.version}</version>
+     </dependency>
+     <!-- Les éléments graphiques et géométriques -->
+     <dependency>
+         <groupId>org.openjfx</groupId>
+         <artifactId>javafx-graphics</artifactId>
+         <version>${javafx.version}</version>
+     </dependency>
+     <!-- Audio, Vidéo -->
+     <dependency>
+         <groupId>org.openjfx</groupId>
+         <artifactId>javafx-media</artifactId>
+         <version>${javafx.version}</version>
+     </dependency>
+     <!-- Pour intégrer JavaFX dans Swing -->
+     <dependency>
+         <groupId>org.openjfx</groupId>
+         <artifactId>javafx-swing</artifactId>
+         <version>${javafx.version}</version>
+     </dependency>
   </dependencies>
   
   <build>
-	  <plugins>
-	    <plugin>
-	        <groupId>org.openjfx</groupId>
-	        <artifactId>javafx-maven-plugin</artifactId>
-	        <version>0.0.8</version>
-	        <configuration>
-	            <mainClass>HelloFX</mainClass>
-	        </configuration>
-	    </plugin>
-	</plugins>
+    <plugins>
+      <plugin>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-maven-plugin</artifactId>
+        <version>${javafx.maven.plugin.version}</version>
+        <configuration>
+          <mainClass>systeme.Main</mainClass>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
   
 </project>

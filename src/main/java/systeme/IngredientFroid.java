@@ -1,4 +1,4 @@
-package tpJava;
+package systeme;
 
 public class IngredientFroid extends Ingredient {
 	
