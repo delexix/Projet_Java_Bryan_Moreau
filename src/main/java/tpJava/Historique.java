@@ -2,8 +2,6 @@ package tpJava;
 
 import java.util.List;
 
-import handler.HistoriqueHandler;
-import handler.PasserCommandeHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,18 +14,21 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import systeme.BorneCommande;
 import systeme.Client;
 import systeme.FileJsoner;
 import systeme.HistoriqueCommande;
+import systeme.Menu;
 
 public class Historique {
 	
 	public Historique(ActionEvent event,BorneCommande borne, Client c) {
 		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		VBox root = new VBox();
+		root.setAlignment(Pos.CENTER);
 		Scene scene = new Scene(root,600,400);
 		
 		//création de la table pour contenir les historiques
@@ -38,7 +39,7 @@ public class Historique {
 		
 		TableColumn<HistoriqueCommande, Double> prixCol = new TableColumn<HistoriqueCommande, Double>("Prix");
 		
-		TableColumn<HistoriqueCommande, String> menuCol = new TableColumn<HistoriqueCommande, String>("Menus");
+		TableColumn<HistoriqueCommande, Menu> menuCol = new TableColumn<HistoriqueCommande, Menu>("Menus");
 		
 		TableColumn<HistoriqueCommande, String> produitCol = new TableColumn<HistoriqueCommande, String>("Produits hors-menu");
 		
@@ -55,8 +56,8 @@ public class Historique {
 	    table.setItems(list);
 
         //ajout des colonnes
-        table.getColumns().addAll(datCol, prixCol);
-        
+        table.getColumns().addAll(datCol, prixCol,menuCol,produitCol);
+              
         root.getChildren().add(table);
 		
 		stage.setScene(scene);

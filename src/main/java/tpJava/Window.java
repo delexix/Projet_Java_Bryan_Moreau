@@ -41,11 +41,11 @@ public class Window extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		//création de la fenetre
-		BorderPane root = new BorderPane();
+		VBox root = new VBox();
+		root.setAlignment(Pos.CENTER);
 		Scene scene = new Scene(root,600,400);
 		
 		//création des composant de la fenêtre
-		VBox vbox = new VBox();
 		Label Lid = new Label("identifiez-vous avec votre numéro de client :");
 		TextField id = new TextField();
 		Button button = new Button("Connexion");
@@ -53,12 +53,7 @@ public class Window extends Application {
 		//ajout de l'action qui arrive quand on clique sur le boutton
 		button.setOnAction(new Connexion(this.borne,id));
 		//ajout des composants
-		vbox.getChildren().add(Lid);
-		vbox.getChildren().add(id);
-		vbox.getChildren().add(button);
-		
-		BorderPane.setAlignment(vbox,Pos.CENTER_RIGHT);
-		root.setCenter(vbox);
+		root.getChildren().addAll(Lid,id,button);
 		
 		//définition de la fenêtre et affichage
 		stage.setScene(scene);

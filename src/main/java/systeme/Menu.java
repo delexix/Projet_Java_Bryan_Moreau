@@ -33,7 +33,7 @@ public class Menu {
 	//toString pour afficher l'objet
 	@Override
 	public String toString() {
-		return "Menu [nom=" + nom + ", prix=" + prix + ", produits=" + produits + "]";
+		return "nom=" + nom + ", prix=" + prix + ", produits=" + produits+"\n";
 	}
 
 	//getter et setter

@@ -39,8 +39,7 @@ public class Produit {
 	//toString pour afficher l'objet
 	@Override
 	public String toString() {
-		return "Produit [exclusifMenu=" + exclusifMenu + ", prix=" + prix + ", nom=" + nom + ", type=" + type
-				+ ", ingredients=" + ingredients + "]";
+		return "\nexclusifMenu=" + exclusifMenu + "\n prix=" + prix + "\n nom=" + nom + "\n type=" + type+"\n";
 	}
 
 	//getter et setter
