@@ -84,7 +84,7 @@ public class BorneCommande {
 		System.out.println("Vos commandes : ");
 		for(int i=0;i<commandes.size();i++) {
 			//TODO : caster les ingrédients en Froid si typeCuisson == null
-			System.out.println("Commande "+i+" : ");
+			System.out.println("Commande "+(i+1)+" : ");
 			System.out.println("Date : "+commandes.get(i).getDateCommande());
 			System.out.println("Prix : "+commandes.get(i).getPrix()+" €");
 			System.out.println("Menus : "+commandes.get(i).getMenus());
