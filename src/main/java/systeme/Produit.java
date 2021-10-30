@@ -1,8 +1,8 @@
-package tpJava;
+package systeme;
 
 import java.util.List;
 
-public class Produit {
+public class Produit implements InterfaceTempsCuisson {
 	private boolean exclusifMenu;
 	private Double prix;
 	private String nom;
@@ -25,22 +25,20 @@ public class Produit {
 	}
 	
 	//permet de calculer le temps que prendra le produit pour être préparé
+	@Override
 	public Double calculTemps() {
 		Double temps = 0.0;
 		
 		for(int i=0;i<ingredients.size();i++) {
-			if(ingredients.get(i) instanceof IngredientCuit) {
-				temps+=((IngredientCuit)(ingredients.get(i))).getTempsCuisson();
-			}		
+			temps+=ingredients.get(i).getTempsCuisson();	
 		}
 		return temps;
 	}
-
+	
 	//toString pour afficher l'objet
 	@Override
 	public String toString() {
-		return "Produit [exclusifMenu=" + exclusifMenu + ", prix=" + prix + ", nom=" + nom + ", type=" + type
-				+ ", ingredients=" + ingredients + "]";
+		return "\nexclusifMenu=" + exclusifMenu + "\n prix=" + prix + "\n nom=" + nom + "\n type=" + type+"\n";
 	}
 
 	//getter et setter
@@ -82,9 +80,6 @@ public class Produit {
 
 	public void setType(String type) {
 		this.type = type;
-	} 
-	
-	
-	
-	
+	}
+
 }

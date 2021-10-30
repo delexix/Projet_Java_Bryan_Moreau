@@ -1,8 +1,8 @@
-package tpJava;
+package systeme;
 
 import java.util.List;
 
-public class Menu {
+public class Menu implements InterfaceTempsCuisson{
 	private String nom;
 	private Double prix;
 	private List<Produit> produits;
@@ -21,6 +21,7 @@ public class Menu {
 	}
 	
 	//permet de calculer le temps que prendra le menu pour être préparé
+	@Override
 	public Double calculTemps() {
 		Double temps = 0.0;
 
@@ -33,7 +34,7 @@ public class Menu {
 	//toString pour afficher l'objet
 	@Override
 	public String toString() {
-		return "Menu [nom=" + nom + ", prix=" + prix + ", produits=" + produits + "]";
+		return "nom=" + nom + ", prix=" + prix + ", produits=" + produits+"\n";
 	}
 
 	//getter et setter

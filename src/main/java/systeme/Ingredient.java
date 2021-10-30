@@ -1,15 +1,15 @@
-package tpJava;
+package systeme;
 
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-@JsonDeserialize(as=IngredientCuit.class)
+@JsonDeserialize(as = IngredientCuit.class,converter=IngredientConverter.class)
 public abstract class Ingredient{
 	private String nom;
 
 	//constructeur par défaut
 	public Ingredient() {
-				
+		super();
 	}
 		
 	//constructeur d'ingrédient
@@ -27,5 +27,8 @@ public abstract class Ingredient{
 		this.nom = nom;
 	}
 	
+	public Double getTempsCuisson() {
+		return 0.0;
+	};
 	
 }
