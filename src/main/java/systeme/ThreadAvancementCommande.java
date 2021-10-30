@@ -36,13 +36,13 @@ public class ThreadAvancementCommande extends Thread {
 			produits.addAll(commande.getMenus().get(i).getProduits());
 		}
 		produits.addAll(commande.getProduits());
-		
+		Double time = 0.0;
 		//simule le temps de préparation des produits
 		for(int j = 0; j<produits.size();j++) {
-			final int index = j;
-
-			Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(produits.get(j).calculTemps()), ev -> {
-				(new Alert(AlertType.INFORMATION,"le "+produits.get(index).getNom()+" de la commande de "+commande.getClient().getPrenom()+" "+commande.getClient().getNom()+" est terminé.",ButtonType.OK)).show();							
+			String produitNom = produits.get(j).getNom();
+			time += produits.get(j).calculTemps();
+			Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(time), ev -> {
+				(new Alert(AlertType.INFORMATION,"le "+produitNom+" de la commande de "+commande.getClient().getPrenom()+" "+commande.getClient().getNom()+" est terminé.",ButtonType.OK)).show();							
 
 		    }));
 		    timeline.setCycleCount(1);
