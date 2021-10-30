@@ -17,7 +17,7 @@ public class FileJsoner <T> {
     public FileJsoner(String filename) {
         file = new File(System.getProperty("user.dir"), filename);
     }
-//TODO : mettre tout les users dans le même fichier 
+ 
     public void writeToFile() {
         try {
             ObjectMapper mapper = new ObjectMapper();
@@ -42,7 +42,7 @@ public class FileJsoner <T> {
     public List<T> readFromFile() {
         try {
         	ObjectMapper mapper = new ObjectMapper();
-        	List<T> l = mapper.readValue(file, new TypeReference<List<HistoriqueCommande>>() {}) ;
+        	List<T> l = mapper.readValue(file, new TypeReference<List<HistoriqueCommande>>() {});
             return l;
         } catch (IOException e) {
             e.printStackTrace();
