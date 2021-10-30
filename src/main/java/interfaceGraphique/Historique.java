@@ -51,7 +51,7 @@ public class Historique {
 		produitCol.setCellValueFactory(new PropertyValueFactory<>("produitsHorsMenu"));
 		
 		//ajout des données
-		FileJsoner<HistoriqueCommande> jsoner = new FileJsoner<HistoriqueCommande>("./src/main/resources/"+c.getNumero()+".json");
+		FileJsoner<HistoriqueCommande> jsoner = new FileJsoner<HistoriqueCommande>("./src/main/resources/"+c.getNumero()+".json",HistoriqueCommande.class);
 		List<HistoriqueCommande> commandes = jsoner.readFromFile();
 		ObservableList<HistoriqueCommande> list = FXCollections.observableArrayList(commandes);
 	    table.setItems(list);

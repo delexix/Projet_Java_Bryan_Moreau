@@ -3,6 +3,9 @@ package systeme;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+
 public class HistoriqueCommande {
 	private String dateCommande;
 	private Double prix;
