@@ -50,8 +50,20 @@ public class Choix {
 			
 		});
 		
+		Button deconnexion = new Button("Deconnexion");
+		
+		//action effectué quand on appuie sur le bouton historique
+		deconnexion.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent event) {
+				new Window(event,borne);
+			}
+			
+		});
+		
 		//ajout des composants
-		root.getChildren().addAll(l1,l2,commande,historique);
+		root.getChildren().addAll(l1,l2,commande,historique,deconnexion);
 		
 		
 		stage.setScene(scene);

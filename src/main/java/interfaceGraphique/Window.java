@@ -8,6 +8,7 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -23,8 +24,10 @@ import systeme.Client;
 public class Window extends Application {
 	private BorneCommande borne;
 	
-	public Window(BorneCommande borne) {
+	public Window(ActionEvent event,BorneCommande borne) {
+		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		this.borne=borne;
+		this.creationWindow(stage);
 	}
 	
 	public Window() {
@@ -40,7 +43,11 @@ public class Window extends Application {
 
 	@Override
 	public void start(Stage stage) throws Exception {
-		//création de la fenetre
+		this.creationWindow(stage);
+	}
+	
+	//permet de crée la page d'accueil
+	public void creationWindow(Stage stage) {
 		VBox root = new VBox();
 		root.setAlignment(Pos.CENTER);
 		root.setSpacing(30);
