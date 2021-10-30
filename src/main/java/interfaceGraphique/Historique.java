@@ -1,4 +1,4 @@
-package tpJava;
+package interfaceGraphique;
 
 import java.util.List;
 

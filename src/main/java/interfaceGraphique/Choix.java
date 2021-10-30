@@ -1,4 +1,4 @@
-package tpJava;
+package interfaceGraphique;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

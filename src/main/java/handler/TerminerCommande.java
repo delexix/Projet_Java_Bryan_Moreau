@@ -1,5 +1,6 @@
 package handler;
 
+import interfaceGraphique.Choix;
 import javafx.application.Platform;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
@@ -11,7 +12,6 @@ import javafx.scene.control.Alert.AlertType;
 import systeme.BorneCommande;
 import systeme.Commande;
 import systeme.ThreadAvancementCommande;
-import tpJava.Choix;
 
 public class TerminerCommande implements EventHandler<ActionEvent> {
 	private Commande commande;

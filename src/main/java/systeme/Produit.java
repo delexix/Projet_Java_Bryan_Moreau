@@ -29,9 +29,7 @@ public class Produit {
 		Double temps = 0.0;
 		
 		for(int i=0;i<ingredients.size();i++) {
-			if(ingredients.get(i) instanceof IngredientCuit) {
-				temps+=((IngredientCuit)(ingredients.get(i))).getTempsCuisson();
-			}		
+			temps+=ingredients.get(i).getTempsCuisson();	
 		}
 		return temps;
 	}

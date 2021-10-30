@@ -8,14 +8,12 @@ import java.util.Scanner;
 public class BorneCommande {
 	private List<Client> clients;
 	private DataBase data;
-	private Scanner sc;
 
 	//constructeur de la borne de commande
 	public BorneCommande(List<Client> clients) {
 		super();
 		this.clients = clients;
 		this.data= new DataBase();
-		this.sc = new Scanner(System.in);
 	}
 	
 	//permet de trouver le client grâce à son numero, s'il n'est pas trouver un Optional empty est renvoyé
@@ -81,14 +79,4 @@ public class BorneCommande {
 	public void setData(DataBase data) {
 		this.data = data;
 	}
-
-	public Scanner getSc() {
-		return sc;
-	}
-
-	public void setSc(Scanner sc) {
-		this.sc = sc;
-	}
-	
-	
 }

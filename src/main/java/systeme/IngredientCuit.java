@@ -24,7 +24,7 @@ public class IngredientCuit extends Ingredient {
 	public void setTypeCuisson(String typeCuisson) {
 		this.typeCuisson = typeCuisson;
 	}
-
+	@Override
 	public Double getTempsCuisson() {
 		return tempsCuisson;
 	}

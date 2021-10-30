@@ -12,4 +12,9 @@ public class IngredientFroid extends Ingredient {
 		super(nom);
 	}
 
+	@Override
+	public Double getTempsCuisson() {
+		return 0.0;
+	}
+
 }

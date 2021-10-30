@@ -1,6 +1,6 @@
 package systeme;
 
-import tpJava.Window;
+import interfaceGraphique.Window;
 
 public class Main {
 

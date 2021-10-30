@@ -1,4 +1,4 @@
-package tpJava;
+package interfaceGraphique;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -89,7 +89,7 @@ public class CommandeView {
 			@Override
 			public void handle(ActionEvent event) {
 				//trouve le menu selectionné et l'ajoute
-				if(menus.getValue().equals("")) {
+				if(menus.getValue() == null) {
 					//cas où l'on a rien selectionner
 					(new Alert(AlertType.INFORMATION,"Aucun menu selectionné",ButtonType.OK)).show();
 				}else {
@@ -108,7 +108,7 @@ public class CommandeView {
 			@Override
 			public void handle(ActionEvent event) {
 				//trouve le produit selectionné et l'ajoute
-				if(produits.getValue().equals("")) {
+				if(produits.getValue() == null) {
 					//cas où l'on a rien selectionner
 					(new Alert(AlertType.INFORMATION,"Aucun produit selectionné",ButtonType.OK)).show();
 				}else {
