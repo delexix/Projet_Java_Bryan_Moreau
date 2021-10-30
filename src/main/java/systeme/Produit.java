@@ -2,7 +2,7 @@ package systeme;
 
 import java.util.List;
 
-public class Produit {
+public class Produit implements InterfaceTempsCuisson {
 	private boolean exclusifMenu;
 	private Double prix;
 	private String nom;
@@ -25,6 +25,7 @@ public class Produit {
 	}
 	
 	//permet de calculer le temps que prendra le produit pour être préparé
+	@Override
 	public Double calculTemps() {
 		Double temps = 0.0;
 		
@@ -33,7 +34,7 @@ public class Produit {
 		}
 		return temps;
 	}
-
+	
 	//toString pour afficher l'objet
 	@Override
 	public String toString() {
@@ -79,9 +80,6 @@ public class Produit {
 
 	public void setType(String type) {
 		this.type = type;
-	} 
-	
-	
-	
-	
+	}
+
 }

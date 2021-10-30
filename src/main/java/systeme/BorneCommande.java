@@ -6,13 +6,11 @@ import java.util.Optional;
 import java.util.Scanner;
 
 public class BorneCommande {
-	private List<Client> clients;
 	private DataBase data;
 
 	//constructeur de la borne de commande
-	public BorneCommande(List<Client> clients) {
+	public BorneCommande() {
 		super();
-		this.clients = clients;
 		this.data= new DataBase();
 	}
 	
@@ -21,10 +19,10 @@ public class BorneCommande {
 		boolean trouver = false;
 		int i=0;
 		Client c = null;
-		while ((!trouver) && i<clients.size()) {
-			if(clients.get(i).getNumero().compareTo(numero) == 0) {
+		while ((!trouver) && i<data.getClients().size()) {
+			if(data.getClients().get(i).getNumero().compareTo(numero) == 0) {
 				trouver = true;
-				c=clients.get(i);
+				c=data.getClients().get(i);
 			}
 			i++;
 		}
@@ -64,14 +62,6 @@ public class BorneCommande {
 	
 
 	//getter et setter
-	public List<Client> getClients() {
-		return clients;
-	}
-
-	public void setClients(List<Client> clients) {
-		this.clients = clients;
-	}
-
 	public DataBase getData() {
 		return data;
 	}

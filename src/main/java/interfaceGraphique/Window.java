@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -31,18 +32,13 @@ public class Window extends Application {
 	}
 	
 	public Window() {
-		//crée les données de l'application
-		Client c = new Client(21,"Bryan","Moreau");
-		Client c1 = new Client(01,"Geoffrey","Yozo");
-		
-		List<Client> l = new ArrayList<Client>();
-		l.add(c);
-		l.add(c1);
-		this.borne = new BorneCommande(l);
+		this.borne = new BorneCommande();
 	}
 
 	@Override
 	public void start(Stage stage) throws Exception {
+		//mise du logo sur la fenêtre
+		stage.getIcons().add(new Image(ClassLoader.getSystemResourceAsStream("logo.jpg")));
 		this.creationWindow(stage);
 	}
 	

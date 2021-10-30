@@ -1,20 +1,17 @@
 package systeme;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class DataBase {
 	private List<Ingredient> ingredients;
 	private List<Menu> menus;
 	private List<Produit> produits;
+	private List<Client> clients;
 	
 	//Cette classe permet de stocké tout les objets utilisé dans le projet
 	public DataBase() {
-		
-		//initialisation des listes
-		this.ingredients = new ArrayList<Ingredient>();
-		this.menus = new ArrayList<Menu>();
-		this.produits = new ArrayList<Produit>();
 		
 		//création des ingrédients
 		Ingredient ing1 = new IngredientCuit("Steak","Grill",1.5);
@@ -32,69 +29,39 @@ public class DataBase {
 		Ingredient ing13 = new IngredientCuit("Nugget de poulet","Graisse à frites",1.0);
 		
 		//ajout des ingrédients
-		Ingredient[] ings = {ing1,ing2,ing3,ing4,ing5,ing6,ing7,ing8,ing9,ing10,ing11,ing12,ing13};
-		for(int i = 0;i<ings.length;i++) {
-			this.ingredients.add(ings[i]);
-		}
+		this.ingredients = new ArrayList<Ingredient>(Arrays.asList(ing1,ing2,ing3,ing4,ing5,ing6,ing7,ing8,ing9,ing10,ing11,ing12,ing13));
 		
 		//création des produits
-		List<Ingredient> ingres1 = new ArrayList<Ingredient>();
-		ingres1.add(ing3);
-		Produit coca = new Produit(false,1.60,"Coca-Cola","Boisson",ingres1);
+		Produit coca = new Produit(false,1.60,"Coca-Cola","Boisson",new ArrayList<Ingredient>(Arrays.asList(ing3)));
 		
-		List<Ingredient> ingres2 = new ArrayList<Ingredient>();
-		ingres2.add(ing1);
-		ingres2.add(ing4);
-		ingres2.add(ing5);
-		ingres2.add(ing6);
-		ingres2.add(ing7);
-		ingres2.add(ing9);
-		ingres2.add(ing10);
-		ingres2.add(ing11);
-		Produit bigMax = new Produit(true,4.50,"Big Max","Plat Principal",ingres2);
+		Produit bigMax = new Produit(true,4.50,"Big Max","Plat Principal",new ArrayList<Ingredient>(Arrays.asList(ing1,ing4,ing5,ing6,ing7,ing9,ing10,ing11)));
 		
-		List<Ingredient> ingres3 = new ArrayList<Ingredient>();
-		ingres3.add(ing4);
-		ingres3.add(ing5);
-		ingres3.add(ing7);
-		Produit salade = new Produit(false,1.60,"Salade composé","Accompagnement",ingres3);
+		Produit salade = new Produit(false,1.60,"Salade composé","Accompagnement",new ArrayList<Ingredient>(Arrays.asList(ing4,ing5,ing7)));
 		
-		List<Ingredient> ingres4 = new ArrayList<Ingredient>();
-		ingres4.add(ing12);
-		Produit frites = new Produit(false,0.60,"Frites","Accompagnement",ingres4);
+		Produit frites = new Produit(false,0.60,"Frites","Accompagnement",new ArrayList<Ingredient>(Arrays.asList(ing12)));
+
+		Produit nuggets = new Produit(false,1.0,"Nuggets","Plat Principal",new ArrayList<Ingredient>(Arrays.asList(ing13)));
 		
-		List<Ingredient> ingres5 = new ArrayList<Ingredient>();
-		ingres5.add(ing13);
-		Produit nuggets = new Produit(false,1.0,"Nuggets","Plat Principal",ingres5);
-		
-		List<Ingredient> ingres6 = new ArrayList<Ingredient>();
-		ingres6.add(ing2);
-		Produit eau = new Produit(false,0.20,"Eau","Boisson",ingres6);
+		Produit eau = new Produit(false,0.20,"Eau","Boisson",new ArrayList<Ingredient>(Arrays.asList(ing2)));
 		
 		//ajout des produits
-		Produit[] prod = {coca,bigMax,salade,frites,nuggets,eau};
-		for(int i = 0;i<prod.length;i++) {
-			this.produits.add(prod[i]);
-		}
+		this.produits = new ArrayList<Produit>(Arrays.asList(coca,bigMax,salade,frites,nuggets,eau));
 		
 		//création des menus
-		List<Produit> menu1 = new ArrayList<Produit>();
-		menu1.add(bigMax);
-		menu1.add(frites);
-		menu1.add(coca);
+		List<Produit> menu1 = new ArrayList<Produit>(Arrays.asList(bigMax,frites,coca));
 		Menu menuNorm = new Menu("Menu Big Max",5.50,menu1);
 		
-		List<Produit> menu2 = new ArrayList<Produit>();
-		menu2.add(nuggets);
-		menu2.add(frites);
-		menu2.add(eau);
+		List<Produit> menu2 = new ArrayList<Produit>(Arrays.asList(nuggets,frites,eau));
 		Menu menuEnfant = new Menu("Menu Enfant",1.50,menu2);
 		
 		//ajout des menus
-		Menu[] menu = {menuNorm,menuEnfant};
-		for(int i = 0;i<menu.length;i++) {
-			this.menus.add(menu[i]);
-		}
+		this.menus = new ArrayList<Menu>(Arrays.asList(menuNorm,menuEnfant));
+		
+		//Ajout des clients
+		Client c = new Client(21,"Bryan","Moreau");
+		Client c1 = new Client(01,"Geoffrey","Yozo");
+
+		this.clients = new ArrayList<Client>(Arrays.asList(c,c1));
 		
 	}
 	
@@ -109,6 +76,10 @@ public class DataBase {
 
 	public List<Produit> getProduits() {
 		return produits;
+	}
+
+	public List<Client> getClients() {
+		return clients;
 	}
 	
 }

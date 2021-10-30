@@ -27,6 +27,8 @@ public abstract class Ingredient{
 		this.nom = nom;
 	}
 	
-	public abstract Double getTempsCuisson();
+	public Double getTempsCuisson() {
+		return 0.0;
+	};
 	
 }

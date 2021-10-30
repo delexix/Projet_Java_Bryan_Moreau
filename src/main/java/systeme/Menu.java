@@ -2,7 +2,7 @@ package systeme;
 
 import java.util.List;
 
-public class Menu {
+public class Menu implements InterfaceTempsCuisson{
 	private String nom;
 	private Double prix;
 	private List<Produit> produits;
@@ -21,6 +21,7 @@ public class Menu {
 	}
 	
 	//permet de calculer le temps que prendra le menu pour être préparé
+	@Override
 	public Double calculTemps() {
 		Double temps = 0.0;
 

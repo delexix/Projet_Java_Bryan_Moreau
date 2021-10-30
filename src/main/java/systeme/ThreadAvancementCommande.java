@@ -51,7 +51,10 @@ public class ThreadAvancementCommande extends Thread {
 
 		Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(commande.calculTemps()), ev -> {
 			(new Alert(AlertType.INFORMATION,"La commande de "+commande.getClient().getPrenom()+" "+commande.getClient().getNom()+" est terminé.",ButtonType.OK)).show();
-			//FileJsoner<List<Commande>> file = new FileJsoner<List<Commande>>();
+			//enregistrement de la commande dans un historique
+			FileJsoner<HistoriqueCommande> jsoner = new FileJsoner<HistoriqueCommande>("./src/main/resources/"+commande.getClient().getNumero()+".json");
+			jsoner.writeToFileNotOverwrite(new HistoriqueCommande(Date.from(Instant.now()),commande.getPrix(),commande.getMenus(),commande.getProduits()));
+			commande.nextStatut();
 	    }));
 	    timeline.setCycleCount(1);
 	    timeline.play();

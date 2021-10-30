@@ -3,7 +3,7 @@ package systeme;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Commande {
+public class Commande implements InterfaceTempsCuisson{
 
 	private String statut;
 	private Double prix;
@@ -41,6 +41,7 @@ public class Commande {
 	}
 	
 	//permet de calculer le temps que prendra la commande pour être préparé
+	@Override
 	public Double calculTemps() {
 		Double temps = 0.0;
 		
