@@ -18,11 +18,19 @@ public class FileJsoner <T> {
     private File file;
     private Class<T> type;
     
+    /**
+     * Constructeur
+     * @param filename
+     * @param type
+     */
     public FileJsoner(String filename, Class<T> type) {
         this.file = new File(System.getProperty("user.dir"), filename);
         this.type = type;
     }
- 
+    
+    /**
+     * Permet de créer un fichier JSON ou de supprimer les données présent dans un fichier existant
+     */
     public void writeToFile() {
         try {
             ObjectMapper mapper = new ObjectMapper();
@@ -33,6 +41,10 @@ public class FileJsoner <T> {
         }
     }
     
+    /**
+     * Permet d'ajouter à un fichier JSON sans effacer les données présents
+     * @param object
+     */
     public void writeToFileNotOverwrite(T object) {
     	List<T> l = this.readFromFile();
         try {
@@ -43,7 +55,11 @@ public class FileJsoner <T> {
             e.printStackTrace();
         }
     }
-
+    
+    /**
+     * Permet de récupérer les données dans un fichier JSON
+     * @return Liste d'objet T
+     */
     public List<T> readFromFile() {
         try {
         	ObjectMapper mapper = new ObjectMapper();
