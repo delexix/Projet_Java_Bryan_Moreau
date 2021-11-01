@@ -22,11 +22,12 @@ import systeme.HistoriqueCommande;
 import systeme.Menu;
 
 public class Historique {
+	
 	/**
-	 * Constructeur créant la page d'historique
-	 * @param event
-	 * @param borne
-	 * @param c
+	 * Constructeur créant la page d'historique de commande
+	 * @param event : évènement lançant la page
+	 * @param borne : borne de commande
+	 * @param c : client identifié précédemment
 	 */
 	public Historique(ActionEvent event,BorneCommande borne, Client c) {
 		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();

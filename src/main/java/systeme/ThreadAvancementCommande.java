@@ -4,19 +4,8 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
-
-import interfaceGraphique.Historique;
-import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.application.Platform;
-import javafx.concurrent.ScheduledService;
-import javafx.concurrent.Task;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.util.Duration;
@@ -25,11 +14,18 @@ import javafx.scene.control.Alert.AlertType;
 public class ThreadAvancementCommande extends Thread {
 	private Commande commande;
 
+	/**
+	 * Constructeur du Thread de préparation de commande
+	 * @param commande : commande à préparer
+	 */
 	public ThreadAvancementCommande(Commande commande) {
 		super();
 		this.commande = commande;
 	}
 	
+	/**
+	 * fonction de lancement de Thread
+	 */
 	public void run() {
 		//ajout des produit dans une liste pour suivre leurs préparations
 		List<Produit> produits = new ArrayList<Produit>();

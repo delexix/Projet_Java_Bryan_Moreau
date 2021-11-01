@@ -3,21 +3,26 @@ package systeme;
 import java.util.Date;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonTypeName;
-
 public class HistoriqueCommande {
 	private String dateCommande;
 	private Double prix;
 	private List<Menu> menus;
 	private List<Produit> produitsHorsMenu;
 	
-	//constructeur par défaut
+	/**
+	 * constructeur par défaut
+	 */
 	public HistoriqueCommande() {
-		
+		super();
 	}
 	
-	//constructeur de la classe qui va permettre de stocké les informations des commandes dans le fichier
+	/**
+	 * constructeur de la classe qui va permettre de stocké les informations des commandes dans le fichier
+	 * @param dateCommande : date à laquelle la commande a été effectuée
+	 * @param prix : prix de la commande
+	 * @param menus : liste de menus de la commande
+	 * @param produitsHorsMenu : liste de produits hors-menu de la commande
+	 */
 	public HistoriqueCommande(Date dateCommande, Double prix, List<Menu> menus, List<Produit> produitsHorsMenu) {
 		super();
 		this.dateCommande = dateCommande.toString();

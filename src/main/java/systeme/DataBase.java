@@ -10,7 +10,9 @@ public class DataBase {
 	private List<Produit> produits;
 	private List<Client> clients;
 	
-	//Cette classe permet de stocké tout les objets utilisé dans le projet
+	/**
+	 * Cette classe permet de stocker tout les objets utilisés dans le projet
+	 */
 	public DataBase() {
 		
 		//création des ingrédients

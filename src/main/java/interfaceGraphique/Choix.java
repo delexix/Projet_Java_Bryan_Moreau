@@ -7,7 +7,6 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import systeme.BorneCommande;
@@ -15,6 +14,12 @@ import systeme.Client;
 
 public class Choix {
 
+	/**
+	 * Constructeur de l'interface de choix
+	 * @param event : évènement lançant la page
+	 * @param borne : borne de commande
+	 * @param c : client identifié précédemment
+	 */
 	public Choix(ActionEvent event,BorneCommande borne, Client c) {
 		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		VBox root = new VBox();

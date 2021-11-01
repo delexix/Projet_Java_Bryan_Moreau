@@ -1,16 +1,8 @@
 package interfaceGraphique;
 
-import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 import handler.TerminerCommande;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.application.Platform;
-import javafx.concurrent.Service;
-import javafx.concurrent.Task;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -26,13 +18,17 @@ import javafx.stage.Stage;
 import systeme.BorneCommande;
 import systeme.Client;
 import systeme.Commande;
-import systeme.HistoriqueCommande;
 import systeme.Menu;
 import systeme.Produit;
-import systeme.ThreadAvancementCommande;
 
 public class CommandeView {
 
+	/**
+	 * Constructeur de l'interface de commande
+	 * @param event : évènement lançant la page
+	 * @param borne : borne de commande
+	 * @param c : client identifié précédemment
+	 */
 	public CommandeView(ActionEvent event, BorneCommande borne, Client c) {
 		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		VBox root = new VBox();

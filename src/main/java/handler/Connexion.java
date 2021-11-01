@@ -6,7 +6,6 @@ import interfaceGraphique.Choix;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
@@ -17,12 +16,20 @@ public class Connexion implements EventHandler<ActionEvent> {
 	private BorneCommande borne;
 	private TextField id;
 	
-	
+	/**
+	 * Constructeur du Handler pour l'évènement de clique sur le bouton de connexion
+	 * @param borne : borne de commande
+	 * @param id : entrée contenant l'id de client fourni par l'utilisateur
+	 */
 	public Connexion(BorneCommande borne, TextField id) {
 		this.borne=borne;
 		this.id=id;
 	}
 
+	/**
+	 * Handler de l'évènement
+	 * @param event : évènement de clique sur bouton
+	 */
 	@Override
 	public void handle(ActionEvent event) {
 		//récupération de l'id entrée

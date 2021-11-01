@@ -17,12 +17,20 @@ public class TerminerCommande implements EventHandler<ActionEvent> {
 	private Commande commande;
 	private BorneCommande borne;
 	
+	/**
+	 * Constructeur du Handler pour l'évènement de clique sur le bouton de finition de commande
+	 * @param commande : commande à terminer
+	 * @param borne : borne de commande
+	 */
 	public TerminerCommande(Commande commande,BorneCommande borne) {
 		this.commande=commande;
 		this.borne=borne;
 	}
 
-
+	/**
+	 * Handler de l'évènement
+	 * @param event : évènement de clique sur bouton
+	 */
 	@Override
 	public void handle(ActionEvent event) {
 		if(commande.getMenus().isEmpty() && commande.getProduits().isEmpty()) {

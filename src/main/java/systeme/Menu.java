@@ -7,12 +7,19 @@ public class Menu implements InterfaceTempsCuisson{
 	private Double prix;
 	private List<Produit> produits;
 	
-	//constructeur par défaut
+	/**
+	 * constructeur par défaut
+	 */
 	public Menu() {
-		
+		super();
 	}
 	
-	//constructeur avec liste
+	/**
+	 * constructeur avec liste
+	 * @param nom : nom du menu
+	 * @param prix : prix du menu
+	 * @param produits : liste des produits du menu
+	 */
 	public Menu(String nom, Double prix, List<Produit> produits) {
 		super();
 		this.nom = nom;
@@ -20,7 +27,10 @@ public class Menu implements InterfaceTempsCuisson{
 		this.produits = produits;
 	}
 	
-	//permet de calculer le temps que prendra le menu pour être préparé
+	/**
+	 * permet de calculer le temps que prendra le menu pour être préparé
+	 * @return Double : temps de préparation du menu
+	 */
 	@Override
 	public Double calculTemps() {
 		Double temps = 0.0;
@@ -31,7 +41,10 @@ public class Menu implements InterfaceTempsCuisson{
 		return temps;
 	}
 	
-	//toString pour afficher l'objet
+	/**
+	 * toString pour afficher l'objet
+	 * @param String : chaine de caractère représentant le menu
+	 */
 	@Override
 	public String toString() {
 		return "nom=" + nom + ", prix=" + prix + ", produits=" + produits+"\n";

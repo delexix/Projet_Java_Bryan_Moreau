@@ -8,12 +8,13 @@ public class Client {
 	private String prenom;
 	private Integer numero;
 	private List<Commande> commandes;
-	
-	/*public Client() {
-		super();
-	}*/
 
-	//constructeur sans liste de commande
+	/**
+	 * constructeur sans liste de commande
+	 * @param numero : numero de client
+	 * @param prenom : prenom du client
+	 * @param nom : nom du client
+	 */
 	public Client(Integer numero,String prenom, String nom) {
 		super();
 		this.nom = nom;
@@ -22,7 +23,13 @@ public class Client {
 		this.commandes = new ArrayList<Commande>();
 	}
 	
-	//constructeur avec liste de commande
+	/**
+	 * constructeur avec liste de commande
+	 * @param numero : numero de client
+	 * @param prenom : prenom du client
+	 * @param nom : nom du client
+	 * @param commandes : liste des commandes du client
+	 */
 	public Client(Integer numero,String prenom, String nom, List<Commande> commandes) {
 		super();
 		this.nom = nom;

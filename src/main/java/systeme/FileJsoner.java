@@ -1,12 +1,6 @@
 package systeme;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonTypeName;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 
 import java.io.File;
@@ -19,9 +13,9 @@ public class FileJsoner <T> {
     private Class<T> type;
     
     /**
-     * Constructeur
-     * @param filename
-     * @param type
+     * Constructeur du FileJsoner
+     * @param filename : nom du fichier dans lequel on enregistre
+     * @param type : équivalent à T.class
      */
     public FileJsoner(String filename, Class<T> type) {
         this.file = new File(System.getProperty("user.dir"), filename);
@@ -43,7 +37,7 @@ public class FileJsoner <T> {
     
     /**
      * Permet d'ajouter à un fichier JSON sans effacer les données présents
-     * @param object
+     * @param object : objet à sauvegarder
      */
     public void writeToFileNotOverwrite(T object) {
     	List<T> l = this.readFromFile();
@@ -58,7 +52,7 @@ public class FileJsoner <T> {
     
     /**
      * Permet de récupérer les données dans un fichier JSON
-     * @return Liste d'objet T
+     * @return List<T> : liste d'objet T
      */
     public List<T> readFromFile() {
         try {

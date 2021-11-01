@@ -7,12 +7,17 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 public abstract class Ingredient{
 	private String nom;
 
-	//constructeur par défaut
+	/**
+	 * constructeur par défaut
+	 */
 	public Ingredient() {
 		super();
 	}
 		
-	//constructeur d'ingrédient
+	/**
+	 * constructeur d'ingrédient
+	 * @param nom : nom de l'ingrédient
+	 */
 	public Ingredient(String nom) {
 		super();
 		this.nom = nom;
@@ -26,7 +31,10 @@ public abstract class Ingredient{
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-	
+	/**
+	 * renvoie le temps de cuisson de l'ingrédient
+	 * @return Double : temps de cuisson de l'ingrédient
+	 */
 	public Double getTempsCuisson() {
 		return 0.0;
 	};

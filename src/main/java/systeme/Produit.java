@@ -9,12 +9,21 @@ public class Produit implements InterfaceTempsCuisson {
 	private String type;
 	private List<Ingredient> ingredients;
 	
-	//constructeur par défaut
+	/**
+	 * constructeur par défaut
+	 */
 	public Produit() {
-			
+		super();	
 	}
 	
-	//constructeur avec liste d'ingrédient
+	/**
+	 * constructeur avec liste d'ingrédient
+	 * @param exclusifMenu : attribut qui montre si le produit est exclusif aux menus ou non
+	 * @param prix : prix du produit
+	 * @param nom : nom du produit
+	 * @param type : type de produit
+	 * @param ingredients : liste d'ingrédients composant le produit
+	 */
 	public Produit(boolean exclusifMenu, Double prix, String nom,String type, List<Ingredient> ingredients) {
 		super();
 		this.exclusifMenu = exclusifMenu;
@@ -24,7 +33,10 @@ public class Produit implements InterfaceTempsCuisson {
 		this.ingredients = ingredients;
 	}
 	
-	//permet de calculer le temps que prendra le produit pour être préparé
+	/**
+	 * permet de calculer le temps que prendra le produit pour être préparé
+	 * @return Double : temps de préparation du produit
+	 */
 	@Override
 	public Double calculTemps() {
 		Double temps = 0.0;
@@ -35,7 +47,10 @@ public class Produit implements InterfaceTempsCuisson {
 		return temps;
 	}
 	
-	//toString pour afficher l'objet
+	/**
+	 * toString pour afficher l'objet
+	 * @param String : chaine de caractère représentant le produit
+	 */
 	@Override
 	public String toString() {
 		return "\nexclusifMenu=" + exclusifMenu + "\n prix=" + prix + "\n nom=" + nom + "\n type=" + type+"\n";

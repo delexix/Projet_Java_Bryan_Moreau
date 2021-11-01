@@ -11,7 +11,11 @@ public class Commande implements InterfaceTempsCuisson{
 	private List<Produit> produits;
 	private List<Menu> menus;
 	
-	//constructeur sans listes et avec le prix initialisé à 0
+	/**
+	 * constructeur sans listes et avec le prix initialisé à 0
+	 * @param statut : statut de la commande
+	 * @param client : client à qui appartient la commande
+	 */
 	public Commande(String statut, Client client) {
 		super();
 		this.statut = statut;
@@ -21,7 +25,13 @@ public class Commande implements InterfaceTempsCuisson{
 		this.menus = new ArrayList<Menu>();
 	}
 	
-	//constructeur sans listes
+
+	/**
+	 * constructeur sans listes
+	 * @param statut : statut de la commande
+	 * @param prix : prix de la commande
+	 * @param client : client à qui appartient la commande
+	 */
 	public Commande(String statut, Double prix, Client client) {
 		super();
 		this.statut = statut;
@@ -30,7 +40,15 @@ public class Commande implements InterfaceTempsCuisson{
 		this.produits = new ArrayList<Produit>();
 		this.menus = new ArrayList<Menu>();
 	}
-	//constructeur avec listes
+	
+	/**
+	 * constructeur avec listes
+	 * @param statut : statut de la commande
+	 * @param prix : prix de la commande
+	 * @param client : client à qui appartient la commande
+	 * @param produits : liste des produits hors-menu de la commande
+	 * @param menus : liste des menus de la commande
+	 */
 	public Commande(String statut, Double prix, Client client, List<Produit> produits, List<Menu> menus) {
 		super();
 		this.statut = statut;
@@ -40,7 +58,11 @@ public class Commande implements InterfaceTempsCuisson{
 		this.menus = menus;
 	}
 	
-	//permet de calculer le temps que prendra la commande pour être préparé
+
+	/**
+	 * permet de calculer le temps que prendra la commande pour être préparé
+	 * @return Double : temps de préparation de la commande
+	 */
 	@Override
 	public Double calculTemps() {
 		Double temps = 0.0;
@@ -54,7 +76,9 @@ public class Commande implements InterfaceTempsCuisson{
 		return temps;
 	}
 	
-	//change le statut de la commande
+	/**
+	 * change le statut de la commande
+	 */
 	public void nextStatut() {
 		if(this.getStatut().equals("En cours")) {
 			this.setStatut("Validé");
@@ -62,7 +86,10 @@ public class Commande implements InterfaceTempsCuisson{
 			this.setStatut("Terminé");
 		}
 	}
-	//permet de calculer le prix de la commande
+	
+	/**
+	 * permet de calculer le prix de la commande
+	 */
 	public void calculPrix() {
 		Double prix = 0.0;
 		
@@ -75,12 +102,20 @@ public class Commande implements InterfaceTempsCuisson{
 		this.prix=arrondir(prix,2);
 	}
 	
-	//effectue un arrondie pour les prix
+	/**
+	 * effectue un arrondie pour les prix
+	 * @param nombre : nombre à arrondir
+	 * @param nbApVirg : nombre de chiffre après la virgule
+	 * @return double : nombre arrondi
+	 */
 	public double arrondir(double nombre,double nbApVirg){
 		return(double)((int)(nombre * Math.pow(10,nbApVirg) + .5)) / Math.pow(10,nbApVirg);
 	}
-	
-	//toString pour afficher l'objet
+
+	/**
+	 * toString pour afficher l'objet
+	 * @param String : chaine de caractère représentant la commande
+	 */
 	@Override
 	public String toString() {
 		return "Commande [statut=" + statut + ", prix=" + prix + ", client=" + client + ", produits=" + produits

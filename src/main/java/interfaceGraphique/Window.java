@@ -1,12 +1,8 @@
 package interfaceGraphique;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import handler.Connexion;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -14,27 +10,35 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import systeme.BorneCommande;
-import systeme.Client;
 
 public class Window extends Application {
 	private BorneCommande borne;
 	
+	/**
+	 * Constructeur de la page d'accueil
+	 * @param event : évènement lançant la page
+	 * @param borne : borne de commande
+	 */
 	public Window(ActionEvent event,BorneCommande borne) {
 		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		this.borne=borne;
 		this.creationWindow(stage);
 	}
 	
+	/**
+	 * Constructeur par défaut
+	 */
 	public Window() {
 		this.borne = new BorneCommande();
 	}
 
+	/**
+	 * Lanceur de la page d'accueil
+	 * @param stage : fenetre JavaFX
+	 */
 	@Override
 	public void start(Stage stage) throws Exception {
 		//mise du logo sur la fenêtre
@@ -42,7 +46,10 @@ public class Window extends Application {
 		this.creationWindow(stage);
 	}
 	
-	//permet de crée la page d'accueil
+	/**
+	 * permet de crée la page d'accueil
+	 * @param stage : fenetre JavaFX
+	 */
 	public void creationWindow(Stage stage) {
 		VBox root = new VBox();
 		root.setAlignment(Pos.CENTER);
