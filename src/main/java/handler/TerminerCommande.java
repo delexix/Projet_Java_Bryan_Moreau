@@ -60,7 +60,7 @@ public class TerminerCommande implements EventHandler<ActionEvent> {
 				
 			};
 			service.start();
-			
+
 			(new Alert(AlertType.INFORMATION,"Votre commande va prendre environ "+Math.round(commande.calculTemps())+" secondes pour être finalisé.",ButtonType.OK)).show();
 			new Choix(event,borne,commande.getClient());
 		}
