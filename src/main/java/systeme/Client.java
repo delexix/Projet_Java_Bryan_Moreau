@@ -10,6 +10,13 @@ public class Client {
 	private List<Commande> commandes;
 
 	/**
+	 * constructeur par défaut
+	 */
+	public Client() {
+		super();
+	}
+	
+	/**
 	 * constructeur sans liste de commande
 	 * @param numero : numero de client
 	 * @param prenom : prenom du client
